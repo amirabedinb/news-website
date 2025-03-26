@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>پروفایل خبرنگار</title>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Vazir, sans-serif;
+            padding: 20px;
+            background: #f9f9f9;
+        }
+        .profile-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .profile-header img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #ccc;
+        }
+        .profile-info h2 {
+            margin: 0;
+        }
+        .profile-info small {
+            color: #777;
+        }
+        .news-list {
+            margin-top: 20px;
+        }
+        .news-list article {
+            background: #f1f1f1;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <div class="profile-header">
+            <img id="reporterAvatar" src="https://via.placeholder.com/80" alt="خبرنگار">
+            <div class="profile-info">
+                <h2 id="reporterName">نام خبرنگار</h2>
+                <small id="reporterBio">بیوگرافی کوتاه خبرنگار نمایش داده می‌شود.</small><br>
+                <span id="reporterRating">امتیاز: 0 ★</span>
+            </div>
+        </div>
+        <hr>
+        <div class="news-list" id="reporterNews">
+            <!-- لیست اخبار خبرنگار -->
+        </div>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const reporter = urlParams.get('username');
+        document.getElementById('reporterName').textContent = reporter;
+
+        // نمایش بیوگرافی ساختگی و آواتار پیش‌فرض
+        const reporterBio = {
+            "Ali": "خبرنگار باسابقه در حوزه سیاسی و اقتصادی.",
+            "Sara": "فعال حوزه فرهنگ و هنر با بیش از ۱۰ سال تجربه."
+        };
+        const reporterImages = {
+            "Ali": "https://randomuser.me/api/portraits/men/75.jpg",
+            "Sara": "https://randomuser.me/api/portraits/women/65.jpg"
+        };
+        if (reporterBio[reporter]) {
+            document.getElementById("reporterBio").textContent = reporterBio[reporter];
+        }
+        if (reporterImages[reporter]) {
+            document.getElementById("reporterAvatar").src = reporterImages[reporter];
+        }
+
+        const newsData = JSON.parse(localStorage.getItem("newsData")) || [];
+        const reporterNews = newsData.filter(n => n.author === reporter);
+
+        const container = document.getElementById("reporterNews");
+        reporterNews.forEach(news => {
+            const article = document.createElement("article");
+            article.innerHTML = `<h3>${news.title}</h3><p>${news.summary}</p><p>خبرنگار: <a href='reporter.html?username=${news.author}'>${news.author}</a></p><p>تاریخ انتشار: ${news.date || 'نامشخص'}</p>`;
+            container.appendChild(article);
+        });
+
+        const ratings = JSON.parse(localStorage.getItem("reporterRatings")) || {};
+        const userRatings = ratings[reporter] || [];
+        const avg = userRatings.length > 0 ? (userRatings.reduce((a, b) => a + b) / userRatings.length).toFixed(1) : 0;
+        document.getElementById("reporterRating").textContent = `امتیاز: ${avg} ★`;
+    </script>
+</body>
+</html>
