@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نام سایت خبری</title>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="top-bar">
+            <div class="logo">لوگو</div>
+            <div class="site-name">نام سایت خبری</div>
+            <div class="user-info" style="margin-right:auto;">
+                <span id="welcomeUser"></span> 
+                <button id="logoutBtn" style="display:none;">خروج</button>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">خانه</a></li>
+                <li><a href="politics.html">سیاست</a></li>
+                <li><a href="culture.html">فرهنگ و هنر</a></li>
+                <li><a href="sports.html">ورزش</a></li>
+                <li><a href="economy.html">اقتصاد</a></li>
+                <li><a href="currency.html">قیمت ارز</a></li>
+                <li><a href="entertainment.html">سرگرمی</a></li>
+            </ul>
+        </nav>
+        <div class="hero-image">[تصویر شاخص]</div>
+    </header>
+    <main>
+        <aside class="ads">[جای تبلیغ]</aside>
+        <section class="news">
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="جستجو در اخبار...">
+            </div>
+            <form id="newsForm">
+                <h3>افزودن خبر جدید</h3>
+                <input type="text" id="title" placeholder="عنوان خبر" required><br>
+                <textarea id="summary" placeholder="چکیده خبر" required></textarea><br>
+                <button type="submit">افزودن</button>
+            </form>
+            <div id="newsList"></div>
+        </section>
+        <aside class="ads">[جای تبلیغ]</aside>
+    </main>
+    <footer>
+        <p>درباره ما | تماس با ما | تبلیغات | قوانین استفاده</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
