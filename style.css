@@ -1,1 +1,158 @@
-body { font-family: Vazir; background: #fff; color: #000; direction: rtl; }
+
+body {
+    font-family: Vazir, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    color: #000;
+    direction: rtl;
+}
+
+header {
+    background-color: #f2f2f2;
+    padding: 10px;
+}
+
+.top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.site-name {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+}
+
+.hero-image {
+    background-color: #ccc;
+    height: 200px;
+    text-align: center;
+    line-height: 200px;
+    font-size: 18px;
+}
+
+main {
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+}
+
+.news {
+    flex: 2;
+}
+
+.ads {
+    flex: 1;
+    background: #eee;
+    padding: 10px;
+}
+
+.search-bar {
+    margin-bottom: 20px;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 8px;
+    font-family: Vazir;
+}
+
+form input, form textarea {
+    width: 100%;
+    padding: 8px;
+    font-family: Vazir;
+    margin-bottom: 10px;
+}
+
+form button {
+    padding: 8px 16px;
+    font-family: Vazir;
+}
+
+article {
+    background: #fafafa;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+}
+
+.meta {
+    font-size: 12px;
+    color: #666;
+}
+
+.rating span {
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.reporter-rating span {
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0 2px;
+}
+
+footer {
+    background: #f2f2f2;
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.comment-section {
+    margin-top: 10px;
+    background: #f9f9f9;
+    padding: 10px;
+    border-top: 1px dashed #ccc;
+}
+
+.comment-list {
+    list-style: none;
+    padding: 0;
+}
+
+.comment-list li {
+    margin-bottom: 5px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+    main {
+        flex-direction: column;
+    }
+    .ads, .news {
+        width: 100%;
+    }
+    .hero-image {
+        height: 120px;
+        line-height: 120px;
+        font-size: 14px;
+    }
+}
